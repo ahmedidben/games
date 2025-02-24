@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>weather App</title>
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <div class="Weather">
+        <div class="search">
+            <input type="text" placeholder="Enter name of city : " spellcheck="false" >
+            <button><img src="imgs/seach.png" ></button>
+        </div>
+        <div class="main">
+            <img src="imgs/sun.png" alt="sun" class="first">
+            <h1>19°C</h1>
+            <h2>Rabat</h2>
+            <div class="details">
+                <div class="col">
+                    <img src="imgs/humidity.png" alt="humidityimg" >
+                    <div>
+                        <p class="desc1 humidity">50%</p>
+                    <p class="desc">humidity</p>
+                    </div>
+                    
+                </div>
+                <div class="col">
+                    <img src="imgs/wind.png" alt="windimg" >
+                    <div>
+                        <p class="desc1 wind">10 Km/h</p>
+                    <p class="desc">wind</p>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+        
+    </div>
+
+    <script>
+        //initialisation
+        const ImgOne=document.getElementsByClassName("first")[0];
+        console.log(ImgOne)
+        const input=document.querySelector("input");
+        const btn=document.querySelector("button");
+        const deg=document.querySelector("h1");
+        const city=document.querySelector("h2");
+        const humidity=document.getElementsByClassName("humidity")[0];
+        console.log(humidity)
+        const wind = document.querySelector(".wind");
+
+
+        const apiKey="5234663de1d408df9f224c662a5fae02";
+        const apiUrl= "https://api.openweathermap.org/data/2.5/weather?units=metric&";
+        const HoleLink="https://api.openweathermap.org/data/2.5/weather?units=metric&q=rabat&appid=5234663de1d408df9f224c662a5fae02";
+        const rabatW= new Promise((res,rej)=>{
+            let dataFromApi=new XMLHttpRequest();
+            dataFromApi.open("GET",HoleLink,true);
+            dataFromApi.send();
+            dataFromApi.onload=function(){
+                if(dataFromApi.status===200 &&dataFromApi.readyState===4){
+                    res(JSON.parse(dataFromApi.responseText));
+                }else{
+                    rej(error("error"));
+                }
+            }
+        });
+
+        rabatW.then(
+            res=>{
+                // console.log(res);
+                deg.innerHTML=Math.round(+res.main.temp);
+                humidity.innerHTML=Math.round(res.main.humidity)+"%";
+                wind.innerHTML=Math.round(res.wind.speed)+"KM/H"
+                ImgOne.src="imgs/"+res.weather[0].main+".png";
+            }
+        )
+
+
+        // dynamique Location 
+        btn.addEventListener("click",checkANDDo);
+
+        async function checkANDDo() {
+            const city1=input.value;
+            if(city1){
+                const apisite=apiUrl+"&q="+city1+"&appid="+apiKey;
+                const rstF=await fetch(apisite);
+                const rst= await rstF.json();
+                console.log(rst);
+                if(rst.cod==="404"){
+                    city.innerHTML=rst.message;
+                }else{
+                    deg.innerHTML=Math.round(+rst.main.temp);
+                    humidity.innerHTML=Math.round(rst.main.humidity)+"%";
+                    wind.innerHTML=Math.round(rst.wind.speed)+"KM/H"
+                    ImgOne.src="imgs/"+rst.weather[0].main+".png";
+                    city.innerHTML=rst.name;
+                }
+            }
+        }
+
+        
+    </script>
+</body>
+</html>

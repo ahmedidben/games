@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="geussG.css">
+    <link rel="shortcut icon" href="./joystick.png" type="image/x-icon">
+</head>
+<body >
+    <div class="backG">
+        <!-- popup  -->
+     <div class="popup">
+        <h2>Guess The Word</h2>
+        <p>Welcome To The Game folks</p>
+        <form action="">
+            <div class="select">
+                <label for="Level">The level:</label>
+                    <select name="Level" id="Level">
+                        <option value="Basic" selected>Beginner</option>
+                        <option value="Intermediate">Intermediate</option>
+                        <option value="Advanced">Adveanced</option>
+                    </select>
+            </div>
+            <div class="inputsH">
+                <label for="lenght">Number Of Letters:</label>
+                <input type="number" name="lenght" id="lenght" max="10" min="3" placeholder="N:" value="3">
+            </div>
+            <button id="Submit">Submit</button>
+        </form>
+     </div>
+    <h1></h1>
+    <div class="geuss-game">
+        <div class="geuss-area">
+            <div class="inputs">
+
+            </div>
+            <div class="control">
+                <button class="check">Check The Word</button>
+                <button class="hint"><span></span>Hint</button>
+            </div>
+            <div class="message"></div>
+        </div>
+        <div class="key-colors">
+            <h2>Key Colors</h2>
+            <div class="key-color ">
+                <div class="key Ok"></div>
+                <div class="key-text">Letter Is Right And In the Place</div>
+            </div>
+            <div class="key-color ">
+                <div class="key no-inTheRightP"></div>
+                <div class="key-text">Letter Is Right But Not In the Place</div>
+            </div>
+            <div class="key-color ">
+                <div class="key no"></div>
+                <div class="key-text">Letter Is Wrong and Not Exists In word</div>
+            </div>
+        </div>
+    </div>
+    <footer></footer>
+    </div>
+    
+    <script src="geussG.js"></script>
+</body>
+</html>

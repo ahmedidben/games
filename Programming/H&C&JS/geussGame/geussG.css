@@ -1,0 +1,269 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+:root{
+   --main-color:#f44336;
+    --main-color-dark:#d32f2f; 
+}
+body{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    background-color: #eee;
+}
+.backG{
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+     z-index: 500;
+}
+h1{
+    text-align: center;
+    margin-top: 0 0 50px;
+    padding: 20px;
+    background-color: white;
+}
+/* popup */
+.popup{
+    width: 568px;
+    max-width: 100%;
+    min-height:300px ;
+    margin: auto;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    z-index: 1000;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    padding: 10px;
+    background-color:var(--main-color) ;
+    border-radius: 18px;
+    box-shadow: 2px 2px 5px gray;
+    color: white;
+}
+form{
+    width: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.popup h2{
+    text-align: center;
+    font-size: 26px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+.popup p{
+    font-size: medium;
+    letter-spacing: 5px;
+    line-height: 2;
+    padding: 10px;
+
+}
+.popup .select{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px;
+
+}
+.popup select{
+    width: 250px;
+    border: none;
+    padding: 10px 15px;
+    font-size: 18px;
+    outline: none;
+
+}
+.popup label{
+    font-size: 18px;
+    font-weight: bold;
+    margin-right: 10px;
+    padding: 10px;
+    
+}
+.popup input{
+    width: 80px;
+    border: none;
+    padding: 10px 15px;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+.popup button{
+    border: none;
+    outline: none;
+    width: 100px;
+    padding: 10px 15px;
+    background-color: var(--main-color-dark);
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    margin: 20px 0;
+    cursor: pointer;
+    text-align: center;
+}
+.popup button:hover{
+    background-color: orange;
+    padding: 10px 25px;
+    text-align: center;
+    transition: padding 0.4s ease-in-out;
+}
+.geuss-game{
+    text-align: center;
+    width: 1000px;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    .geuss-area{
+        .inputs{
+            > div{
+                margin-bottom: 20px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                span{
+                    font-size: 20px;
+                    font-weight: bold;
+                    margin-right: 10px;
+                }
+            }
+            .disabled-inputs{
+                opacity: 0.5;
+                pointer-events: none;
+            }
+            input{
+                margin: 0 5px;
+                width: 50px;
+                height: 50px;
+                font-size: 40px;
+                text-align: center;
+                caret-color: var(--main-color);
+                background: white;
+                border: none;
+                border-bottom: var(--main-color) 3px solid;
+                &:focus{
+                    outline: #ccc;
+                }
+                &.Ok{
+                    background-color: orange;
+                    border: orange;
+                    color: white;
+                    opacity: 0.7;
+                }
+                &.no-inTheRightP{
+                    background-color: green;
+                    border: green;
+                    color: white;
+                    opacity: 0.7;
+                }
+                &.no{
+                    background-color: black;
+                    border: black;
+                    color: white;
+                    opacity: 0.7;
+                }
+            }
+        }
+        .control{
+            margin-top: 60px;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+
+            button{
+                padding: 10px 30px;
+                font-size: 20px;
+                color: white;
+                border: none;
+                cursor: pointer;
+                margin-right: 5px;
+                border-radius: 5px;
+               &.check{
+                background-color: var(--main-color);
+                flex:1;
+                &:hover{
+                    background-color: var(--main-color-dark);
+                }
+                &:disabled{
+                    background-color: gray;
+                    cursor: not-allowed;
+                }
+               }
+               &.hint{
+                background-color: green;
+                &:hover{
+                    background-color: darkgreen;
+                }
+                &:disabled{
+                    background-color: gray;
+                    cursor: not-allowed;
+                }
+               }
+            }
+        }
+    }
+    .key-colors{
+        h2{
+            margin-bottom: 20px;
+        }
+        .key-color{
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            background-color: white;
+            margin-bottom: 10px;
+            .key{
+                width: 25px;
+                height: 25px;
+                margin-right: 10px;
+                &.Ok{
+                    background-color: orange;
+                }
+                &.no-inTheRightP{
+                    background-color: green;
+                }
+                &.no{
+                    background-color: black;
+                }
+            }
+            .key-text{
+                font-size: 20px;
+                font-weight: bold;
+            }
+        }
+    }
+}
+.message {
+    text-align: center;
+    font-weight: bold;
+    font-size: 30px;
+    margin-top: 20px;
+    span{
+        font-weight: bold;
+        display: block;
+        font-size: 50px;
+        color: var(--main-color);
+        text-transform: capitalize;
+        margin-top:10px ;
+    }
+    p{
+        margin-top: 15px;
+    }
+}
+footer{
+    text-align: center;
+    padding: 20px;
+    background-color: #333;
+    color: white;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
